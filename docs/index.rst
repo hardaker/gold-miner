@@ -3,8 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to gold-mine's documentation!
-=====================================
+gold-miner -- identify encrypted traffic
+========================================
+
+The `gold-mine` tool suite uses simple, rapid statistical analysis to
+identify encrypted traffic based on a training profile.
 
 .. toctree::
    :maxdepth: 1
