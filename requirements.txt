@@ -1,0 +1,5 @@
+pyfsdb
+numpy
+dpkt
+rich
+pyaml
