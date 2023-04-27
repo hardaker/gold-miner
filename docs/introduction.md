@@ -1,10 +1,10 @@
 # About gold-mine
 
-The `gold-mine` tool suite applies a simple statistical analysis of
+The `gold-miner` tool suite applies a simple statistical analysis of
 labeled traffic samples to produce a profile which can then be used to
 fingerprint an unknown traffic sample with a goal of rapidly
 identifying its contents without requiring deep packet inspection.
-Specifically, `gold-mine` is designed to prioritize calculation speed
+Specifically, `gold-miner` is designed to prioritize calculation speed
 over higher levels of accuracy that more complex analysis techniques
 may produce.
 
@@ -19,19 +19,28 @@ generated
 [ROC](https://en.wikipedia.org/wiki/Receiver_operating_characteristic)
 curves).
 
-# Installing gold-mine
+# Installing gold-miner
 
-## Installing the requirements
+You can install `gold-miner` from pypi or from a `git clone`:
+
+## Installing from pypi
+
+You can install gold-miner using pip:
+
+    pip install --user --upgrade gold-miner
+
+Optionally install the UI tools that provide a number of additional
+tools (that in turn require pulling in a larger number of python
+prerequisite packages):
+
+    pip install --user --upgrade gold-miner-ui
+
+## Installing from the source tree
+
+Start with installing the requirements:
 
     pip3 install --user --upgrade -r requirements.txt
 
-## Install the gold mine tools itself.
-
-If you have release tar-ball, install it with pip:
-
-    pip3 install --user --upgrade gold-mine-0.3.2.tar.gz
-
-If you're installing from source, install it with the setup.py
-manager:
+Start with installing the package itself:
 
     python3 setup.py install --user --force
