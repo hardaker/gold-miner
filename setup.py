@@ -15,7 +15,6 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     entry_points={
         "console_scripts": [
-            # migrating to pdb prefixes
             "gold-miner = apropos.goldminer.tools.goldminer:main",
             "gold-miner-trainer = apropos.goldminer.tools.trainer:main",
             "gold-miner-trainer-aggregator = apropos.goldminer.tools.aggregator:main",
