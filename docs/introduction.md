@@ -1,4 +1,4 @@
-# About gold-mine
+# About gold-miner
 
 The `gold-miner` tool suite applies a simple statistical analysis of
 labeled traffic samples to produce a profile which can then be used to
@@ -8,13 +8,13 @@ Specifically, `gold-miner` is designed to prioritize calculation speed
 over higher levels of accuracy that more complex analysis techniques
 may produce.
 
-To get started with gold-mine, we suggest reading the
+To get started with gold-miner, we suggest reading the
 [Gold Mine Workflow](workflow)
 document that describes in greater detail how to use
 the tools, and the [Gold Mine Test and Evaluation Tool](tande)
 describes a tool that takes a *YAML* configuration file to analyze a
 set of traffic samples and produce a detailed report about how well
-the `gold-mine` tool properly identifies those samples (which includes
+the `gold-miner` tool properly identifies those samples (which includes
 generated
 [ROC](https://en.wikipedia.org/wiki/Receiver_operating_characteristic)
 curves).

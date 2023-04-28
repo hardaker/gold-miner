@@ -4,8 +4,8 @@ import sys
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter, FileType
 import logging
 from logging import debug, info, warning, error, critical
-from apropos.goldmine.trainer import GoldMineTrainer
-from apropos.goldmine.trainer.widthtrainer import GoldMineWidthTrainer
+from apropos.goldminer.trainer import GoldMineTrainer
+from apropos.goldminer.trainer.widthtrainer import GoldMineWidthTrainer
 
 
 def parse_args():

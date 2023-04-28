@@ -11,15 +11,15 @@ setuptools.setup(
     description="A encrypted tunnel identification research package",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://gitlab.com/isi-apropos/gold-mine",
+    url="https://gitlab.com/isi-apropos/gold-miner",
     packages=setuptools.find_packages(),
     entry_points={
         "console_scripts": [
             # migrating to pdb prefixes
-            "gold-mine = apropos.goldmine.tools.goldmine:main",
-            "gold-mine-trainer = apropos.goldmine.tools.trainer:main",
-            "gold-mine-trainer-aggregator = apropos.goldmine.tools.aggregator:main",
-            "gold-mine-smelter = apropos.goldmine.tools.smelter:main",
+            "gold-miner = apropos.goldminer.tools.goldminer:main",
+            "gold-miner-trainer = apropos.goldminer.tools.trainer:main",
+            "gold-miner-trainer-aggregator = apropos.goldminer.tools.aggregator:main",
+            "gold-miner-smelter = apropos.goldminer.tools.smelter:main",
         ]
     },
     classifiers=[

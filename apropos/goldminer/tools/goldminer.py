@@ -21,14 +21,14 @@ try:
 except Exception:
     pass
 
-from apropos.goldmine.pickaxe.pickaxe import PickAxe
+from apropos.goldminer.pickaxe.pickaxe import PickAxe
 
 
 def get_parser():
     parser = ArgumentParser(
         formatter_class=ArgumentDefaultsHelpFormatter,
         description=__doc__,
-        epilog="Exmaple Usage: gold-mine.py -i " + "INTERFACE -g profilename",
+        epilog="Exmaple Usage: gold-miner.py -i " + "INTERFACE -g profilename",
     )
 
     parser.add_argument(
@@ -238,17 +238,17 @@ def parse_args():
 
 def process_arguments(args, axe):
     if args.live_results:
-        from apropos.goldmine.output.goldTextDump import GoldTextDump
+        from apropos.goldminer.output.goldTextDump import GoldTextDump
 
         axe.output = GoldTextDump()
     elif args.curses:
-        from apropos.goldmine.output.goldCurses import GoldCurses
+        from apropos.goldminer.output.goldCurses import GoldCurses
 
         axe.output = GoldCurses(
             as_percentage=args.percentage, parameter_file=args.thresholds
         )
     elif args.output_json or args.output_flattened_json:
-        from apropos.goldmine.output.goldJson import GoldJson
+        from apropos.goldminer.output.goldJson import GoldJson
 
         axe.output = GoldJson(
             as_percentage=args.percentage,
@@ -259,15 +259,15 @@ def process_arguments(args, axe):
         )
     elif args.output_ui:
         try:
-            from apropos.goldmine.output.goldQt import GoldQt
+            from apropos.goldminer.output.goldQt import GoldQt
         except Exception:
-            error("The goldQt module was not found -- please install gold-mine-ui")
+            error("The goldQt module was not found -- please install gold-miner-ui")
             exit(1)
 
         axe.output = GoldQt()
     else:
         # default to FSDB output formatted
-        from apropos.goldmine.output.goldFsdb import GoldFsdb
+        from apropos.goldminer.output.goldFsdb import GoldFsdb
 
         axe.output = GoldFsdb(
             out_file_handle=args.output_file,
@@ -277,7 +277,7 @@ def process_arguments(args, axe):
         )
 
     if args.high_low_watermark:
-        from apropos.goldmine.output.goldHighLowWatermark import GoldHighLowWatermark
+        from apropos.goldminer.output.goldHighLowWatermark import GoldHighLowWatermark
 
         highlow = GoldHighLowWatermark(
             high=args.high_low_watermark[0],

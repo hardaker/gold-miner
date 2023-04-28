@@ -1,7 +1,7 @@
 import sys
 import json
 
-from apropos.goldmine.output.goldOutput import GoldOutput
+from apropos.goldminer.output.goldOutput import GoldOutput
 
 
 class GoldJson(GoldOutput):

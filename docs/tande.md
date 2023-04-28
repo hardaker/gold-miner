@@ -1,21 +1,21 @@
 # Automated test and evaluation
 
-*NOTE: this tool is part of the `gold-mine-ui` python package, which
-is distributed separately from the `gold-mine` python package``
+*NOTE: this tool is part of the `gold-miner-ui` python package, which
+is distributed separately from the `gold-miner` python package``
 
-The `gold-mine-tande` tool is designed to take a series of labeled
+The `gold-miner-tande` tool is designed to take a series of labeled
 pcap files listed in a YAML configuration file and:
 
 1. take one listed set of PCAP files as a training set
-2. take a second list to evaluate the effectiveness of `gold-mine`
+2. take a second list to evaluate the effectiveness of `gold-miner`
 3. output an html (and markdown) report that shows the results of these
    training and testing phases
 
-Note: `gold-mine-tande` requires `pandoc` to be installed on the system.
+Note: `gold-miner-tande` requires `pandoc` to be installed on the system.
 
 ## YAML configuration overview
 
-The `gold-mine-tande` tool is driven by a YAML configuration file that
+The `gold-miner-tande` tool is driven by a YAML configuration file that
 is divided into parts:
 
 1. a general configuration section
@@ -77,7 +77,7 @@ train:
 
 The `test` sections works similar to the `train` section, with a list
 of PCAP `file`s and associated `label`s to use for determining when
-the `gold-mine` classifier gets a prediction right or wrong.
+the `gold-miner` classifier gets a prediction right or wrong.
 
 ``` yaml
 test:
@@ -94,7 +94,7 @@ test:
 ## Optional attributes
 
 The YAML configuration tokens can include directives that affect the
-processing of the `gold-mine-tande` "run".  Be sure to read the
+processing of the `gold-miner-tande` "run".  Be sure to read the
 "Inheritance and Overrides" section below as well for applying these
 at different levels of the configuration hierarchy.
 
@@ -109,7 +109,7 @@ packet_count: 10000
 
 #### skip_packets N
 
-This will cause the `gold-mine-tande` to skip the first N packets of
+This will cause the `gold-miner-tande` to skip the first N packets of
 the pcap before processing it for the given section (*train* or *test*).
 
 ``` yaml
@@ -160,7 +160,7 @@ test:
 
 ## Algorithm
 
-There are actually 4 (sub)algorithms that the `gold-mine` suite
+There are actually 4 (sub)algorithms that the `gold-miner` suite
 supports.  The algorithm to use can be specified with a top level
 `algorithm` directive:
 
@@ -169,12 +169,12 @@ supports.  The algorithm to use can be specified with a top level
 - linear
 - lms
 
-There is additionally a special algorithm that `gold-mine-tande`
+There is additionally a special algorithm that `gold-miner-tande`
 supports called `all`, which will run the train/test suite repeatedly
 -- once for each algorithm and generate a resulting comparison
 summary.
 
-The `gold-mine` tool accepts a `-a` flag for passing the algorithm to
+The `gold-miner` tool accepts a `-a` flag for passing the algorithm to
 the run-time utility.  Note that the run-time utility doesn't support
 the `all` keyword though.
 
@@ -210,6 +210,6 @@ moment.  It may go away in the future.
 
 # Output
 
-The output of the `gold-mine-tande` tool produces an entire directory
+The output of the `gold-miner-tande` tool produces an entire directory
 of files.  An `index.html` file is built at the top of the directory
 to allow easy browsing and understanding of the results.

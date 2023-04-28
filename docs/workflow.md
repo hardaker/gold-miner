@@ -1,14 +1,14 @@
-# Using gold-mine
+# Using gold-miner
 
-To use `gold-mine` to attempt classification of unknown traffic, the
+To use `gold-miner` to attempt classification of unknown traffic, the
 following steps should be done in turn:
 
 1. Analyze a set of labeled training pcaps containing known, encrypted
-   protocol traffic using `gold-mine-trainer`
+   protocol traffic using `gold-miner-trainer`
 2. Combining those individual training results into a single,
    aggregated *training profile* by using
-   `gold-mine-trainer-aggregator`.
-3. Use the `gold-mine` tools with the training profile to analyze
+   `gold-miner-trainer-aggregator`.
+3. Use the `gold-miner` tools with the training profile to analyze
    unknown traffic in a PCAP or on an interface.
 
 The steps below describe this process in greater detail.
@@ -21,7 +21,7 @@ and Evaluation Suite](tande) tool may be easier to start with instead
 of running each of these steps by hand.
 
 Also see the [Additional Tools](tools) document that describes
-additional useful tools that are distributed with the `gold-mine`
+additional useful tools that are distributed with the `gold-miner`
 package.
 
 # Steps to Classify Unknown Traffic Samples
@@ -37,13 +37,13 @@ stream to see how well it may match a known profile.
 ## 1. Generating individual training profiles
 
 To generate individual training profiles based on each type of known,
-labeled datasets use the `gold-mine-trainer` command.  It can analyze
+labeled datasets use the `gold-miner-trainer` command.  It can analyze
 any number of pcaps and generate a starting statistical dataset to be
 used in later steps.  [Hint: Use an output filename that reflects the
 type of data being analyzed.]  Example usage:
 
-    gold-mine-trainer -T -o web_traffic.fsdb web_traffic.pcap
-    gold-mine-trainer -T -o mail_traffic.fsdb mail_traffic.pcap
+    gold-miner-trainer -T -o web_traffic.fsdb web_traffic.pcap
+    gold-miner-trainer -T -o mail_traffic.fsdb mail_traffic.pcap
 
 In these examples, the `web_traffic.pcap` file is analyzed and a
 `web_traffic.fsdb` training profile file is produced.  A similar
@@ -52,11 +52,11 @@ example is shown for (e)mail traffic.
 ## 2. Combine individual training profiles together
 
 Once the multiple individual training sets are created, they must be
-merged before giving them to `gold-mine` below.  To merge them, use
-`gold-mine-trainer-aggregator` with label/file pairs to create an
+merged before giving them to `gold-miner` below.  To merge them, use
+`gold-miner-trainer-aggregator` with label/file pairs to create an
 aggregated `training-profile.fsdb`:
 
-    gold-mine-trainer-aggregator -o training-profile.fsdb \
+    gold-miner-trainer-aggregator -o training-profile.fsdb \
     web web_traffic.fsdb \
     mail mail_traffic.fsdb
 
@@ -72,11 +72,11 @@ be a string of FSDB (tab separated) data representing confidence
 values.  We assume we have a protocol of interest matching one of the
 profile names in the training file ("mail" in the example below).
 
-    gold-mine -r unknown.pcap -p training-profile.fsdb -g mail
+    gold-miner -r unknown.pcap -p training-profile.fsdb -g mail
 
 ### Selecting a sub-algorithm to use
 
-`gold-mine` supports four different (sub-)algorithms for identifying
+`gold-miner` supports four different (sub-)algorithms for identifying
 traffic:
 
 - comparison
@@ -101,5 +101,5 @@ dataset containing (see below for turning on json output instead):
 
 ### JSON output
 
-The `gold-mine` tool can also output a stream json records if that's
-easier to parse.  Run `gold-mine` with `-j` to enable this feature.
+The `gold-miner` tool can also output a stream json records if that's
+easier to parse.  Run `gold-miner` with `-j` to enable this feature.

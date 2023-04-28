@@ -2,7 +2,7 @@ import sys
 import collections
 import numpy as np
 from logging import debug, info, warning, error, critical
-from apropos.goldmine.trainer import GoldMineBase
+from apropos.goldminer.trainer import GoldMineBase
 
 
 class GoldMineWidthTrainer(GoldMineBase):

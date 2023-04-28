@@ -2,3 +2,7 @@ __pycache__
 /gold_mine.egg-info/
 /dist/
 /docs/_build/
+*.egg-info
+build
+testenv*
+test-all.sh

@@ -6,7 +6,7 @@ import collections
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter, FileType
 import logging
 from logging import debug, info, warning, error, critical
-from apropos.goldmine.trainer import GoldMineTrainer
+from apropos.goldminer.trainer import GoldMineTrainer
 
 
 def parse_args():

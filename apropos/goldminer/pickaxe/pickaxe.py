@@ -5,7 +5,7 @@ import numpy as np
 import time
 import pyfsdb
 import pprint
-from apropos.goldmine.output.noop import GoldNoOp
+from apropos.goldminer.output.noop import GoldNoOp
 
 #
 # Analyzer

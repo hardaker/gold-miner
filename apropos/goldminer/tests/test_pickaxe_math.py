@@ -3,7 +3,7 @@ import unittest
 
 class TestPickAxeMath(unittest.TestCase):
     def test_difference_function(self):
-        from apropos.goldmine.pickaxe.pickaxe import PickAxe
+        from apropos.goldminer.pickaxe.pickaxe import PickAxe
 
         a = PickAxe()
 

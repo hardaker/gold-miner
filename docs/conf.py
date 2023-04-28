@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = "gold-mine"
+project = "gold-miner"
 copyright = "2022-2023, USC/ISI"
 author = "Wes Hardaker"
 
