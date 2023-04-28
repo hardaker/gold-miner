@@ -116,13 +116,3 @@ JSON output
 
 The ``gold-miner`` tool can also output a stream json records if that’s
 easier to parse. Run ``gold-miner`` with ``-j`` to enable this feature.
-
-
-Command Line Arguments
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. sphinx_argparse_cli::
-   :module: pyfsdb.tools.workflow
-   :func: parse_args
-   :hook:
-   :prog: workflow

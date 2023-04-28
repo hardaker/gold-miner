@@ -22,7 +22,7 @@ copyright = "2022-2023, USC/ISI"
 author = "Wes Hardaker"
 
 # The full version, including alpha/beta/rc tags
-release = "0.4.0"
+release = "1.1"
 
 
 # -- General configuration ---------------------------------------------------
@@ -30,7 +30,11 @@ release = "0.4.0"
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ["myst_parser"]
+extensions = [
+    "myst_parser",
+    "sphinx_argparse_cli",
+    "sphinx.ext.autodoc",
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
