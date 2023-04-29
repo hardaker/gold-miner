@@ -1,0 +1,8 @@
+#fsdb -F t traffic_label email-client_true:l email-client_false:l email-client_precision:d email-server_true:d email-server_false:l email-server_precision:l https-client_true:d https-client_false:d https-client_precision:l https-server_true:l https-server_false:d https-server_precision:d ftp-client_true:l ftp-client_false:l ftp-client_precision:d
+email-client	1	0	1.0	0.0	1	0	1.0	0.0	1	0	1.0	0.0	1	0	1.0	0.0
+email-server	1	0	1.0	0.0	1	0	1.0	0.0	1	0	1.0	0.0	1	0	1.0	0.0
+https-client	1	0	1.0	0.0	1	0	1.0	0.0	1	0	1.0	0.0	1	0	1.0	0.0
+https-server	1	0	1.0	0.0	1	0	1.0	0.0	1	0	1.0	0.0	1	0	1.0	0.0
+ftp-client	1	0	1.0	0.0	1	0	1.0	0.0	1	0	1.0	0.0	1	0	1.0	0.0
+ftp-server	0	1	0.0	1.0	0	1	0.0	0.0	0	1	0.0	0.0	0	1	0.0	0.0	0	1	0.0	0.0
+#   | testenv/bin/gold-miner-tande tande.yml

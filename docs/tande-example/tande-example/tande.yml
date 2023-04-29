@@ -1,0 +1,47 @@
+processes: 8
+output_directory: tande-test
+tmp_dir: tande-test-tmp
+algorithm: lms
+packet_count: 1400
+train:
+  files:
+    - file: ipsec-data/email-smtp.pcap
+      label: email-client
+      filter: esp and src 10.0.3.2
+    - file: ipsec-data/email-smtp.pcap
+      label: email-server
+      filter: esp and src 10.0.6.2
+    - file: ipsec-data/web-browsing.pcap
+      label: https-client
+      filter: esp and src 10.0.3.2
+    - file: ipsec-data/web-browsing.pcap
+      label: https-server
+      filter: esp and src 10.0.6.2
+    - file: ipsec-data/ftp.pcap
+      label: ftp-client
+      filter: esp and src 10.0.3.2
+    - file: ipsec-data/ftp.pcap
+      label: ftp-server
+      filter: esp and src 10.0.6.2
+
+test:
+  skip_packets: 1400
+  files:
+    - file: ipsec-data/email-smtp.pcap
+      label: email-client
+      filter: esp and src 10.0.3.2
+    - file: ipsec-data/email-smtp.pcap
+      label: email-server
+      filter: esp and src 10.0.6.2
+    - file: ipsec-data/web-browsing.pcap
+      label: https-client
+      filter: esp and src 10.0.3.2
+    - file: ipsec-data/web-browsing.pcap
+      label: https-server
+      filter: esp and src 10.0.6.2
+    - file: ipsec-data/ftp.pcap
+      label: ftp-client
+      filter: esp and src 10.0.3.2
+    - file: ipsec-data/ftp.pcap
+      label: ftp-server
+      filter: esp and src 10.0.6.2

@@ -222,8 +222,20 @@ This is rarely the right algorithm to use, but is left in for the
 moment. It may go away in the future.
 
 Output
-======
+------
 
 The output of the ``gold-miner-tande`` tool produces an entire directory
 of files. An ``index.html`` file is built at the top of the directory to
 allow easy browsing and understanding of the results.
+
+Example
+-------
+
+An `example report`_ shows what the results look like for a simple
+test case that involved testing client and server traffic from three
+different traffic types over an IPsec tunnel.  The `example
+configuration`_ shows the YAML configuration file given to the
+`gold-mine-tande` application.
+
+.. _example report: tande-example/index.html
+.. _example configuration: tande-example/tande.yml

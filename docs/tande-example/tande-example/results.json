@@ -1,0 +1,1 @@
+{"processes": 8, "tande_time": "0.0976", "test_auc": "0.8444", "test_auc_classifiers": {"email-client": "1.0000", "email-server": "1.0000", "https-client": "1.0000", "https-server": "1.0000", "ftp-client": "1.0000", "ftp-server": "0.0000"}, "algorithm_used": "lms"}

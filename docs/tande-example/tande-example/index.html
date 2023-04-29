@@ -1,0 +1,504 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="generator" content="pandoc">
+
+
+      <title>Gold-Mine Test and Evaluation Report</title>
+      <!-- Bootstrap -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <!-- Font-awesome -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!-- Styles -->
+      <link rel="stylesheet" href="https://ashki23.github.io/styles.css">
+      <!-- Styles -->
+      <link rel="stylesheet" href="report.css">
+            <!-- Add favicon here -->
+            <!-- Add site-verifications here -->
+         </head>
+   <body>
+            <!-- From https://getbootstrap.com/docs/4.5/components/navbar/ -->
+            <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+               <img src="hardhat.svg" style="height: 20px;" class="logo" />
+               <a class="navbar-brand" href="#">
+                 Gold-Mine
+               </a>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                     <li class="nav-item active">
+                        <a class="nav-link" href="#">Top<span class="sr-only">(current)</span></a>
+                     </li>
+                     <li class="nav-item active">
+                        <a class="nav-link"
+                        href="#summarized-evaluation-results">Summarized Evaluation Results</a>
+                     </li>
+                     <li class="nav-item active">
+                        <a class="nav-link"
+                        href="#detailed-test-results">Detailed Test Results</a>
+                     </li>
+                  </ul>
+               </div>
+            </nav>
+            <div class="container">
+         <h1 class="title">Gold-Mine Test and Evaluation Report</h1>
+                  <div class="row">
+            <div class="col-xl-10"><p>The following report describes the test and evaluation of the following datasets:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Evaluation Parameter</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Classifier algorithm</strong></td>
+<td style="text-align: left;"><em>lms</em></td>
+</tr>
+<tr class="even">
+<td><strong>Training files</strong></td>
+<td style="text-align: left;">6</td>
+</tr>
+<tr class="odd">
+<td><strong>Test files</strong></td>
+<td style="text-align: left;">6</td>
+</tr>
+<tr class="even">
+<td><strong>Processors used</strong></td>
+<td style="text-align: left;">8</td>
+</tr>
+<tr class="odd">
+<td><strong>Processing time</strong></td>
+<td style="text-align: left;">0.0976 minutes</td>
+</tr>
+<tr class="even">
+<td><strong>Result AUC</strong></td>
+<td style="text-align: left;">0.8444</td>
+</tr>
+</tbody>
+</table>
+<h1 id="result-summary">Result summary</h1>
+<h2 id="summarized-training-results">Summarized training results</h2>
+<p>Training analysis estimates the difference in fingerprinting the various protocols in the chart below, where a lighter color (yellow) represents greater diversity between the protocols and easier to identify against the corresponding.</p>
+<p><img class="img-fluid" src="training-similarity.png" /></p>
+<h2 id="summarized-test-evaluation-results">Summarized test evaluation results</h2>
+<p>Evaluation results, with blue indicating good (true-positives) and red indicating false positive rates. These results are likely more accurate than the estimated similarity above.</p>
+<p><img class="img-fluid" src="comparison.png" /></p>
+<p>The ROC curve for these test results:</p>
+<p><img class="img-fluid" src="results-ROC.png" /></p>
+<h2 id="measured-classifier-precisions">Measured Classifier Precisions</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Classifier</th>
+<th style="text-align: right;">tp</th>
+<th style="text-align: right;">fp</th>
+<th>Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">email-client</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td>0.5000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">email-server</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td>1.0000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">https-client</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td>1.0000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">https-server</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td>1.0000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ftp-client</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td>1.0000</td>
+</tr>
+</tbody>
+</table>
+<h2 id="individual-classifier-rocs">Individual Classifier ROCs</h2>
+<h3 id="classifier-roc-email-client">Classifier ROC: email-client</h3>
+<p><img class="img-fluid" src="results-email-client-ROC.png" /></p>
+<h3 id="classifier-roc-email-server">Classifier ROC: email-server</h3>
+<p><img class="img-fluid" src="results-email-server-ROC.png" /></p>
+<h3 id="classifier-roc-https-client">Classifier ROC: https-client</h3>
+<p><img class="img-fluid" src="results-https-client-ROC.png" /></p>
+<h3 id="classifier-roc-https-server">Classifier ROC: https-server</h3>
+<p><img class="img-fluid" src="results-https-server-ROC.png" /></p>
+<h3 id="classifier-roc-ftp-client">Classifier ROC: ftp-client</h3>
+<p><img class="img-fluid" src="results-ftp-client-ROC.png" /></p>
+<h1 id="detailed-test-results">Detailed test results</h1>
+<p>The following section describes each test case and whether the classification model successfully identified the traffic in question. Each file below contains a graph showing the detection pseudo-confidence between 0.0 and 1.0, along with the classifier confidence scores per flow-identifier within the traffic observed.</p>
+<h2 id="test-1-email-client-traffic"><img src="check.svg" class="result"/> Test 1: email-client traffic</h2>
+<ul class="incremental">
+<li><p>File: ipsec-data/email-smtp.pcap</p>
+<ul class="incremental">
+<li>Filtered applied: esp and src 10.0.3.2</li>
+<li>Packets processed: 1400</li>
+</ul></li>
+<li><p>Traffic label: email-client</p></li>
+<li><p>Processing time: 0.0107 minutes</p></li>
+</ul>
+<p><img class="img-fluid" src="b1f1fc5a469f926f506c1a1520b0f613f4ac2df146f4fba7b4e365bbbece6d15.test.0.png" /></p>
+<h3 id="flows-identified">Flows identified:</h3>
+<ul class="incremental">
+<li><img src="check.svg" class="result"/> flow identifier: (50, ‘10.0.3.2’, ‘10.0.6.2’)
+<ul class="incremental">
+<li>Total packets: 1400</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Label</th>
+<th style="text-align: left;">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">email-client</td>
+<td style="text-align: left;">0.7169</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">https-server</td>
+<td style="text-align: left;">0.3331</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">email-server</td>
+<td style="text-align: left;">0.2185</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ftp-server</td>
+<td style="text-align: left;">0.1667</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">https-client</td>
+<td style="text-align: left;">0.0934</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ftp-client</td>
+<td style="text-align: left;">0.0613</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<h2 id="test-2-email-server-traffic"><img src="check.svg" class="result"/> Test 2: email-server traffic</h2>
+<ul class="incremental">
+<li><p>File: ipsec-data/email-smtp.pcap</p>
+<ul class="incremental">
+<li>Filtered applied: esp and src 10.0.6.2</li>
+<li>Packets processed: 1400</li>
+</ul></li>
+<li><p>Traffic label: email-server</p></li>
+<li><p>Processing time: 0.0087 minutes</p></li>
+</ul>
+<p><img class="img-fluid" src="2b132ea16444177e7f574e554b49bfb52d14f159ed1e518d64279002dd719b8f.test.1.png" /></p>
+<h3 id="flows-identified-1">Flows identified:</h3>
+<ul class="incremental">
+<li><img src="check.svg" class="result"/> flow identifier: (50, ‘10.0.6.2’, ‘10.0.3.2’)
+<ul class="incremental">
+<li>Total packets: 1400</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Label</th>
+<th style="text-align: left;">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">email-server</td>
+<td style="text-align: left;">0.9857</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ftp-server</td>
+<td style="text-align: left;">0.5000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">https-client</td>
+<td style="text-align: left;">0.3361</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">email-client</td>
+<td style="text-align: left;">0.1573</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">https-server</td>
+<td style="text-align: left;">0.1537</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ftp-client</td>
+<td style="text-align: left;">0.1205</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<h2 id="test-3-https-client-traffic"><img src="check.svg" class="result"/> Test 3: https-client traffic</h2>
+<ul class="incremental">
+<li><p>File: ipsec-data/web-browsing.pcap</p>
+<ul class="incremental">
+<li>Filtered applied: esp and src 10.0.3.2</li>
+<li>Packets processed: 1400</li>
+</ul></li>
+<li><p>Traffic label: https-client</p></li>
+<li><p>Processing time: 0.0079 minutes</p></li>
+</ul>
+<p><img class="img-fluid" src="7b0e1b4ef729ffec4f544e803ed07b23170c1615694f5063f3030c361355481c.test.2.png" /></p>
+<h3 id="flows-identified-2">Flows identified:</h3>
+<ul class="incremental">
+<li><img src="check.svg" class="result"/> flow identifier: (50, ‘10.0.3.2’, ‘10.0.6.2’)
+<ul class="incremental">
+<li>Total packets: 1400</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Label</th>
+<th style="text-align: left;">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">https-client</td>
+<td style="text-align: left;">0.9286</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">email-server</td>
+<td style="text-align: left;">0.3898</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ftp-server</td>
+<td style="text-align: left;">0.2222</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">https-server</td>
+<td style="text-align: left;">0.1537</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">email-client</td>
+<td style="text-align: left;">0.0976</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ftp-client</td>
+<td style="text-align: left;">0.0243</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<h2 id="test-4-https-server-traffic"><img src="check.svg" class="result"/> Test 4: https-server traffic</h2>
+<ul class="incremental">
+<li><p>File: ipsec-data/web-browsing.pcap</p>
+<ul class="incremental">
+<li>Filtered applied: esp and src 10.0.6.2</li>
+<li>Packets processed: 1400</li>
+</ul></li>
+<li><p>Traffic label: https-server</p></li>
+<li><p>Processing time: 0.0120 minutes</p></li>
+</ul>
+<p><img class="img-fluid" src="c7ed7c5e4b1278f401f101efd7cb9d349fb255440806ffab6abb7047eb699bfc.test.3.png" /></p>
+<h3 id="flows-identified-3">Flows identified:</h3>
+<ul class="incremental">
+<li><img src="check.svg" class="result"/> flow identifier: (50, ‘10.0.6.2’, ‘10.0.3.2’)
+<ul class="incremental">
+<li>Total packets: 1400</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Label</th>
+<th style="text-align: left;">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">https-server</td>
+<td style="text-align: left;">0.9806</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">email-client</td>
+<td style="text-align: left;">0.3772</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ftp-server</td>
+<td style="text-align: left;">0.1542</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">email-server</td>
+<td style="text-align: left;">0.1493</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">https-client</td>
+<td style="text-align: left;">0.1293</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ftp-client</td>
+<td style="text-align: left;">0.0469</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<h2 id="test-5-ftp-client-traffic"><img src="check.svg" class="result"/> Test 5: ftp-client traffic</h2>
+<ul class="incremental">
+<li><p>File: ipsec-data/ftp.pcap</p>
+<ul class="incremental">
+<li>Filtered applied: esp and src 10.0.3.2</li>
+<li>Packets processed: 1400</li>
+</ul></li>
+<li><p>Traffic label: ftp-client</p></li>
+<li><p>Processing time: 0.0038 minutes</p></li>
+</ul>
+<p><img class="img-fluid" src="9ed41639cc18bc7484c0bec6740b82fdd4a28ef438e6a511970ca802da134d21.test.4.png" /></p>
+<h3 id="flows-identified-4">Flows identified:</h3>
+<ul class="incremental">
+<li><img src="check.svg" class="result"/> flow identifier: (50, ‘10.0.3.2’, ‘10.0.6.2’)
+<ul class="incremental">
+<li>Total packets: 1400</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Label</th>
+<th style="text-align: left;">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ftp-client</td>
+<td style="text-align: left;">0.4018</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ftp-server</td>
+<td style="text-align: left;">0.2857</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">email-server</td>
+<td style="text-align: left;">0.1954</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">https-client</td>
+<td style="text-align: left;">0.0407</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">https-server</td>
+<td style="text-align: left;">0.0383</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">email-client</td>
+<td style="text-align: left;">0.0380</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<h2 id="test-6-ftp-server-traffic"><img src="cancel.svg" class="result"/> Test 6: ftp-server traffic</h2>
+<ul class="incremental">
+<li><p>File: ipsec-data/ftp.pcap</p>
+<ul class="incremental">
+<li>Filtered applied: esp and src 10.0.6.2</li>
+<li>Packets processed: 1400</li>
+</ul></li>
+<li><p>Traffic label: ftp-server</p></li>
+<li><p>Processing time: 0.0043 minutes</p></li>
+</ul>
+<p><img class="img-fluid" src="ee7ce0f19c30f6f67a701fd48f620fbe30eb65ee24bc7a0d2c891fabc6adcafd.test.5.png" /></p>
+<h3 id="flows-identified-5">Flows identified:</h3>
+<ul class="incremental">
+<li><img src="cancel.svg" class="result"/> flow identifier: (50, ‘10.0.6.2’, ‘10.0.3.2’)
+<ul class="incremental">
+<li>Total packets: 1400</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Label</th>
+<th style="text-align: left;">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">email-client</td>
+<td style="text-align: left;">0.0200</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">https-server</td>
+<td style="text-align: left;">0.0195</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ftp-server</td>
+<td style="text-align: left;">0.0012</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">email-server</td>
+<td style="text-align: left;">0.0000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">https-client</td>
+<td style="text-align: left;">0.0000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ftp-client</td>
+<td style="text-align: left;">0.0000</td>
+</tr>
+</tbody>
+</table></li>
+</ul></div>
+            <div class="d-none d-xl-block col-xl-2 bd-toc">
+               <ul class="section-nav">
+                  <li class="toc-entry"><ul class="incremental">
+<li><a href="#result-summary">Result summary</a>
+<ul class="incremental">
+<li><a href="#summarized-training-results">Summarized training results</a></li>
+<li><a href="#summarized-test-evaluation-results">Summarized test evaluation results</a></li>
+<li><a href="#measured-classifier-precisions">Measured Classifier Precisions</a></li>
+<li><a href="#individual-classifier-rocs">Individual Classifier ROCs</a></li>
+</ul></li>
+<li><a href="#detailed-test-results">Detailed test results</a>
+<ul class="incremental">
+<li><a href="#test-1-email-client-traffic"><img src="check.svg" class="result"/> Test 1: email-client traffic</a></li>
+<li><a href="#test-2-email-server-traffic"><img src="check.svg" class="result"/> Test 2: email-server traffic</a></li>
+<li><a href="#test-3-https-client-traffic"><img src="check.svg" class="result"/> Test 3: https-client traffic</a></li>
+<li><a href="#test-4-https-server-traffic"><img src="check.svg" class="result"/> Test 4: https-server traffic</a></li>
+<li><a href="#test-5-ftp-client-traffic"><img src="check.svg" class="result"/> Test 5: ftp-client traffic</a></li>
+<li><a href="#test-6-ftp-server-traffic"><img src="cancel.svg" class="result"/> Test 6: ftp-server traffic</a></li>
+</ul></li>
+</ul></li>
+               </ul>
+            </div>
+         </div>
+               </div>
+            <!-- JS, Popper.js, and jQuery -->
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+      <!-- Mathjax -->
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script>
+         /* Bootstrap styles to tables */
+         function bootstrapStylePandocTables() {
+         $('tr.header').parent('thead').parent('table').addClass('table table-condensed'); }
+         $(document).ready(function () { bootstrapStylePandocTables(); });
+         /* Adjust the height when click the toc */
+         var shiftWindow = function() { scrollBy(0, -60) };
+         window.addEventListener("hashchange", shiftWindow);
+         function load() { if (window.location.hash) shiftWindow(); }
+      </script>
+   </body>
+</html>

@@ -1,0 +1,5 @@
+#fsdb -F t key:l size_count:l percent_size_count:d
+124	63597	0.883807220878846
+140	8341	0.11591483921176242
+108	20	0.00027793990939158953
+#   | testenv/bin/gold-miner-tande tande.yml

@@ -1,0 +1,45 @@
+.table {
+  table-layout: auto;
+  margin-left: 0px;
+  margin-right: auto;
+  margin-top: 1em;
+}
+
+img.result {
+    height: 1em;
+}
+
+h2 img.result {
+    margin-right: .5em;
+}
+
+img.logo {
+    height: 20px;
+    margin-right: 1em;
+}
+
+a.navbar-brand {
+    margin-left: 1em;
+}
+
+h2 {
+    background-color: #ccc;
+    padding: .25em;
+    margin-top: 1em;
+    width: 80%;
+}
+
+h1 {
+    background-color: #cce;
+    padding: .25em;
+    margin-top: 1em;
+    width: 80%;
+}
+
+.img-fluid {
+    display: block;
+    max-height: 500px;
+    max-width: 80%;
+    width: auto;
+    height: auto;
+}
