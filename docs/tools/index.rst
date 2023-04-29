@@ -6,4 +6,6 @@ Gold-Miner Tools
    :caption: Contents:
 
    goldminer
+   goldminertrainer
+   goldminertraineraggregator
    auditor
