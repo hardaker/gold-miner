@@ -40,7 +40,7 @@ class GoldMineBase:
     def analyze_files(self, pcap_files: list, count: int = 0, pkt_filter: str = None):
         self.reset()
         for n, pcap_file in enumerate(pcap_files):
-            info(f"ANALYZING: {pcap_file} with {pkt_filter=} {count=}")
+            info(f"ANALYZING: {pcap_file} with filter={pkt_filter} count={count}")
 
             # open the pcap file
             pcap = dpkt.pcap.Reader(open(pcap_file, "rb"))

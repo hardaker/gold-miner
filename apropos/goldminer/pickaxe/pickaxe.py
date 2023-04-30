@@ -151,7 +151,7 @@ class PickAxe:
         self.skip_packets = skip_packets
         pkt_count = max_packets + self.skip_packets
         info(
-            f"ANALYZING: {pcap_file} with {pkt_filter=} {max_packets=} {skip_packets=}"
+            f"ANALYZING: {pcap_file} with filter={pkt_filter} max={max_packets} skip={skip_packets}"
         )
 
         # open the pcap file
@@ -314,7 +314,9 @@ class PickAxe:
                     dirty_range_min,
                 )
 
-                debug(f"{size}: {percents[size]}  ({gold_max}, {gold_min})")
+                debug(
+                    f"sz={size}: %s={percents[size]}  (max={gold_max}, min={gold_min})"
+                )
 
             # we're done build the trained results for this profile
             self.gold_mines[gold_profile] = percents
@@ -582,10 +584,10 @@ class PickAxe:
                     ) = training_percents[pkt_size]
 
                     # debug(f"calculating '{mine}' distance: ")
-                    # debug(f"  {measured=}")
-                    # debug(f"  {gold_value=}")
-                    # debug(f"  {dirty_min=}")
-                    # debug(f"  {dirty_max=}")
+                    # debug(f"  {measured}")
+                    # debug(f"  {gold_value}")
+                    # debug(f"  {dirty_min}")
+                    # debug(f"  {dirty_max}")
                     difference = self.calculate_distance(
                         measured,
                         dirty_min,
@@ -597,7 +599,7 @@ class PickAxe:
 
                     difference_total += difference
                     debug(
-                        f"{pkt_size}\tm={measured}, percents={training_percents[pkt_size]}\t result: {difference}"
+                        f"sz={pkt_size}\tm={measured}, percents={training_percents[pkt_size]}\t result: {difference}"
                     )
                     # debug(f"# {spi}\t{seen}\t{signal_importance}\t{deviation}")
 
@@ -625,7 +627,7 @@ class PickAxe:
                         number_of_sizes += delta
                     average_difference = 1 - (difference_total / number_of_sizes)
                     debug(
-                        f"diff total: {protocol_label=} {difference_total=} / {number_of_sizes=} = {average_difference=}"
+                        f"diff total: {protocol_label} {difference_total} / {number_of_sizes} = {average_difference}"
                     )
 
                     label = protocol_label
@@ -771,7 +773,7 @@ class PickAxe:
             # spi, length, 'times' is an array of times up to its length 'length' index
             if tunnel_size_data["length"] >= tunnel_size_data["max_length"]:
                 warning(
-                    f"extending {identifier=} array size to {tunnel_size_data['max_length']*2}"
+                    f"extending {identifier} array size to {tunnel_size_data['max_length']*2}"
                 )
                 tunnel_size_data["times"] = np.hstack(
                     [
@@ -858,7 +860,7 @@ class PickAxe:
                                 dirty_range_min,
                             )
 
-                    debug(f"{windows_considered=} for {identifier=}")
+                    debug(f"{windows_considered} for {identifier}")
                     if windows_considered == 0:
                         continue
                     difference = difference / windows_considered

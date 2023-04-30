@@ -71,7 +71,7 @@ def output_results(
     for spi in spi_counts:
         tokens = list(current_values[spi].keys())
         if len(tokens) <= 1:
-            warning(f"Insufficient gold parameters identified for {timestamp=}")
+            warning(f"Insufficient gold parameters identified for time={timestamp}")
             warning(f"Only keys found: {tokens}")
             warning(f"skipping")
             return
