@@ -1,19 +1,25 @@
 Automated test and evaluation
 =============================
 
-\*NOTE: this tool is part of the ``gold-miner-ui`` python package, which
-is distributed separately from the ``gold-miner`` python package`\`
+**IMPORTANT: this page describes the `gold-mine-tande` tool that is
+part of the ``gold-miner-ui`` python package, which is distributed
+separately from the ``gold-miner`` python package**
 
 The ``gold-miner-tande`` tool is designed to take a series of labeled
 pcap files listed in a YAML configuration file and:
 
-1. take one listed set of PCAP files as a training set
-2. take a second list to evaluate the effectiveness of ``gold-miner``
+1. take one listed set of PCAP files as a training set and use it to
+   create a gold-miner training profile
+2. take a second list of labeled files to evaluate the effectiveness
+   of traffic detection using the profile and the ``gold-miner`` tool
 3. output an html (and markdown) report that shows the results of these
    training and testing phases
 
-Note: ``gold-miner-tande`` requires ``pandoc`` to be installed on the
-system.
+*Note: ``gold-miner-tande`` tool requires ``pandoc`` to be installed
+on the system.*
+
+*Example output:* see the Example_ section below, and the `example
+report`_ page.
 
 YAML configuration overview
 ---------------------------
@@ -25,8 +31,8 @@ that is divided into parts:
 2. a *train* section
 3. a *test* section
 
-The YAML configuration structure looks roughly like the following
-example block. Each section is further discussed below.
+The YAML configuration structure looks like the following
+example block. Each configuration section is further discussed below.
 
 .. code:: yaml
 
@@ -55,14 +61,17 @@ Training
 --------
 
 The *train* section should contain a list of pcap files to use for
-training, along with their appropriate labels. These files **must not**
-contain multiple types of data (i.e., multiple labels).
+training, along with their appropriate labels. These files **must not
+contain multiple types of data** (i.e., multiple labels).
 
-Note that both the ``train``\ ing and ``test``\ ing sections can take a
+Note that both the ``train``\ ing and ``test``\ ing section entries can take a
 ``filter`` token that will apply a standard PCAP filter for selecting or
 removing certain elements from supplied packet traces. Do note that
 these ``filter`` sections will create secondary (filtered) PCAPs inside
 the temporary directory that is specified by the ``tmp_dir`` directive.
+
+The results of the training will produce a *training-profile.fsdb*
+file in the output directory.
 
 .. code:: yaml
 
@@ -79,10 +88,10 @@ the temporary directory that is specified by the ``tmp_dir`` directive.
 Testing
 -------
 
-The ``test`` sections works similar to the ``train`` section, with a
-list of PCAP ``file``\ s and associated ``label``\ s to use for
-determining when the ``gold-miner`` classifier gets a prediction right
-or wrong.
+The ``test`` sections works similar to the ``train`` section,
+containing a list of PCAP ``file``\ s and associated ``label``\ s, to
+use for determining when the ``gold-miner`` classifier gets a label
+prediction of unknown traffic correct or incorrect.
 
 .. code:: yaml
 
@@ -99,15 +108,15 @@ or wrong.
 Optional attributes
 -------------------
 
-The YAML configuration tokens can include directives that affect the
-processing of the ``gold-miner-tande`` “run”. Be sure to read the
-“Inheritance and Overrides” section below as well for applying these at
-different levels of the configuration hierarchy.
+The YAML configuration tokens can include additional directives that
+affect the processing of the ``gold-miner-tande`` run. Be sure to read
+the 'Inheritance and Overrides'_ section below, which discusses how to
+apply these at different levels of the configuration hierarchy.
 
 packet_count N
 ~~~~~~~~~~~~~~
 
-This will limit the number of packets to read in a *train* and/or *test*
+This will limit the number of packets to read in a **train* and/or *test*
 file
 
 .. code:: yaml
@@ -124,13 +133,14 @@ the pcap before processing it for the given section (*train* or *test*).
 
    packet_count: 10000
 
+
 Inheritance and Overrides
 -------------------------
 
-A number of the directives can be placed at the top level in the YAML
-file, underneath just the ``test`` or ``train`` sections, or next to
-each file itself. Lower level directives will override upper level
-directives.
+A number of the directives that affect processing of individual
+entries can be placed at the top level in the YAML file, underneath
+just the ``test`` or ``train`` sections, or next to each file
+itself. Lower level directives will override upper level directives.
 
 As an example, consider the case where you want to read 10000 packets
 from every pcap in the ``train`` section, 20000 in the ``test`` section,
@@ -167,8 +177,8 @@ The resulting YAML might look like:
        packet_count: 500
        skip_packets: 500
 
-Algorithm
----------
+Algorithm selection
+---------------------
 
 There are actually 4 (sub)algorithms that the ``gold-miner`` suite
 supports. The algorithm to use can be specified with a top level
@@ -183,50 +193,17 @@ There is additionally a special algorithm that ``gold-miner-tande``
 supports called ``all``, which will run the train/test suite repeatedly
 – once for each algorithm and generate a resulting comparison summary.
 
-The ``gold-miner`` tool accepts a ``-a`` flag for passing the algorithm
-to the run-time utility. Note that the run-time utility doesn’t support
-the ``all`` keyword though.
-
-The following algorithms are available for use:
-
-algorithm: comparison
-~~~~~~~~~~~~~~~~~~~~~
-
-This is the default, and works best with entirely labeled traffic with
-no unknown traffic expected. It works by comparing an unknown flow
-against all known profiles to differentiate among the different types in
-the training profile. Thus, it will not work when applied to a traffic
-sample with an unprofiled traffic flow within it.
-
-algorithm: linear
-~~~~~~~~~~~~~~~~~
-
-The ``linear`` algorithm calculates the difference from a given flow vs
-the training profile, regardless of what the other training flows use.
-This may succeed at times when the ``comparison`` algorithm doesn’t,
-especially in cases of unknown traffic being mixed in with the traffic
-being prioritized.
-
-algorithm: lms
-~~~~~~~~~~~~~~
-
-The ``lms`` algorithm is similar to the ``linear`` algorithm, but uses
-the common square of the difference instead of a linear distance. These
-two algorithms usually perform closely together in performance but one
-may be better than another.
-
-algorithm: comparison-wide
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-This is rarely the right algorithm to use, but is left in for the
-moment. It may go away in the future.
+See the `gold-miner algorithm documentation <tools/goldminer.html>`__
+for further details on selecting the best algorithm for your use case.
 
 Output
 ------
 
-The output of the ``gold-miner-tande`` tool produces an entire directory
-of files. An ``index.html`` file is built at the top of the directory to
-allow easy browsing and understanding of the results.
+The output of the ``gold-miner-tande`` tool produces an entire
+directory of files in the directory specified by the
+`output_directory` token. An ``index.html`` file is built at the top
+of the directory to allow easy browsing and understanding of all of
+the results.
 
 Example
 -------
