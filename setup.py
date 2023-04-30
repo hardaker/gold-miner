@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="gold-miner",
-    version="1.2",
+    version="1.5",
     author="Wes Hardaker",
     author_email="opensource@hardakers.net",
     description="A encrypted tunnel identification research package",
