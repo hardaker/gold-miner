@@ -10,13 +10,14 @@ The `gold-miner` tool suite uses simple, rapid statistical analysis to
 identify encrypted traffic based on a training profile.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Contents:
 
    introduction
    workflow
    tande
    tools/index
+   development
 
 Indices and tables
 ==================

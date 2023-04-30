@@ -1,4 +1,4 @@
-About gold-miner
+About
 ================
 
 The ``gold-miner`` tool suite applies a simple statistical analysis of
@@ -18,10 +18,13 @@ generated
 `ROC <https://en.wikipedia.org/wiki/Receiver_operating_characteristic>`__
 curves).
 
-Installing gold-miner
+Installation
 =====================
 
-You can install ``gold-miner`` from pypi or from a ``git clone``:
+You can install ``gold-miner`` from pypi or from a ``git clone`` of
+the repository_:
+
+.. _repository: https://github.com/hardaker/gold-miner
 
 Installing from pypi
 --------------------
@@ -32,7 +35,7 @@ You can install gold-miner using pip:
 
    pip install --user --upgrade gold-miner
 
-Optionally install the UI tools that provide a number of additional
+*Optionally* install the UI tools that provide a number of additional
 tools (that in turn require pulling in a larger number of python
 prerequisite packages):
 
@@ -42,6 +45,12 @@ prerequisite packages):
 
 Installing from the source tree
 -------------------------------
+
+Clone the repository:
+
+::
+
+   git clone https://github.com/hardaker/gold-miner.git
 
 Start with installing the requirements:
 
@@ -54,3 +63,8 @@ Start with installing the package itself:
 ::
 
    python3 setup.py install --user --force
+
+
+*optionally repeat this process for the gold-miner-ui_ package*
+
+.. _gold-miner-ui: https://github.com/hardaker/gold-miner-ui

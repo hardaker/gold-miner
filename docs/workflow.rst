@@ -1,24 +1,33 @@
 Using gold-miner
 ================
 
-To use ``gold-miner`` to attempt classification of unknown traffic, the
-following steps should be done in turn:
+To use the ``gold-miner`` suite to attempt classification of unknown
+traffic, the following steps should be done in turn:
 
 1. Analyze a set of labeled training pcaps containing known, encrypted
-   protocol traffic using ``gold-miner-trainer``
+   protocol traffic using gold-miner-trainer_
 2. Combining those individual training results into a single, aggregated
-   *training profile* by using ``gold-miner-trainer-aggregator``.
-3. Use the ``gold-miner`` tools with the training profile to analyze
+   *training profile* by using gold-miner-trainer-aggregator_.
+3. Use the gold-miner_ tools with the training profile to analyze
    unknown traffic in a PCAP or on an interface.
 
-The steps below describe this process in greater detail.
+.. _gold-miner-trainer: tools/goldminertrainer.html
+.. _gold-miner-trainer-aggregator: tools/goldminertraineraggregator.html
+.. _gold-miner: tools/goldminer.html
+
+The steps below describe this process at a higher level, and the
+individual tools pages above provide greater detail about how each of
+the tools work.
 
 Note that all of these steps can be executed in automated fashion by
-using the `Test and Evaluation Suite <tande>`__, which takes a number of
-labeled datasets from a YAML configuration file, creates a profile,
-analyzes the data for accuracy and produces an HTML report. The `Test
-and Evaluation Suite <tande>`__ tool may be easier to start with instead
-of running each of these steps by hand.
+using the `Test and Evaluation Suite <tande>`_, which takes a a YAML
+configuration file, creates a profile, analyzes the data for accuracy
+and produces an HTML report. (an `example report`_ is available to see
+what the output looks like). The `Test and Evaluation Suite <tande>`_
+tool may be easier to start with instead of running each of these
+steps by hand.
+
+.. _example report: tande-example/index.html
 
 Also see the `Additional Tools <tools>`__ document that describes
 additional useful tools that are distributed with the ``gold-miner``
@@ -53,6 +62,8 @@ In these examples, the ``web_traffic.pcap`` file is analyzed and a
 ``web_traffic.fsdb`` training profile file is produced. A similar
 example is shown for (e)mail traffic.
 
+For further information see the gold-miner-trainer_ tool documentation.
+
 2. Combine individual training profiles together
 ------------------------------------------------
 
@@ -71,6 +82,8 @@ Note that the arguments to the script include a repeated set of pairs of
 a generic word as a label (e.g. ``web``) and the individual training
 profile for it (e.g. ``web_traffic.fsdb``).
 
+For further information see the gold-miner-trainer-aggregator_ tool documentation.
+
 3. Analyzing an unknown traffic source
 --------------------------------------
 
@@ -84,35 +97,12 @@ in the training file (“mail” in the example below).
 
    gold-miner -r unknown.pcap -p training-profile.fsdb -g mail
 
-Selecting a sub-algorithm to use
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This tools, by default, generates a tab-separated list of output data
+that can be easily parsed.  A confidence value is given per traffic
+type being detected that can be compared against other types to
+determine what the traffic most likely might be.
 
-``gold-miner`` supports four different (sub-)algorithms for identifying
-traffic:
-
--  comparison
--  comparison-wide
--  linear
--  lms
-
-See the `T&E algorithm documentation <tande>`__ for further details on
-selecting the best algorithm for your use case.
-
-Interpreting Tab-Separated Value Output
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The output of this utility by default is a
-`FSDB <https://pyfsdb.readthedocs.io/en/latest/doc.html>`__ formatted
-dataset containing (see below for turning on json output instead):
-
-1. a packet timestamp
-2. an identifier (5-tuple, 3-tuple or IPSec specific)
-3. a token being searched for (eg: “mail”)
-4. a confidence value 0-1
-5. the packet counts seen per identifier so far
-
-JSON output
-~~~~~~~~~~~
-
-The ``gold-miner`` tool can also output a stream json records if that’s
-easier to parse. Run ``gold-miner`` with ``-j`` to enable this feature.
+For further information see the gold-miner_ tool documentation, which
+also goes into greater detail about the output, describes the other
+output format options, along with specifying other sub-algorithms to
+select between.
