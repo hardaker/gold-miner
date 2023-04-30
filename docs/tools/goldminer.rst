@@ -30,7 +30,7 @@ The output includes a bunch of columns in a tab-separated file (called
 an FSDB_ file).  Example output may look like:
 
 Interpreting Tab-Separated Value Output
----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The output of this utility by default is a FSDB_ formatted dataset
 containing (see below for turning on json output instead):
@@ -80,7 +80,7 @@ This example graph shows that after a number of packets the
 options being graphed.
 
 Selecting a sub-algorithm to use
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``gold-miner`` supports four different (sub-)algorithms for identifying
 traffic:
@@ -124,24 +124,12 @@ algorithm: comparison-wide
 This is rarely the right algorithm to use, but is left in for the
 moment. It may go away in the future.
 
-Interpreting Tab-Separated Value Output
----------------------------------------
-
-The output of this utility by default is a
-`FSDB <https://pyfsdb.readthedocs.io/en/latest/doc.html>`__ formatted
-dataset containing (see below for turning on json output instead):
-
-1. a packet timestamp
-2. an identifier (5-tuple, 3-tuple or IPSec specific)
-3. a token being searched for (eg: “mail”)
-4. a confidence value 0-1
-5. the packet counts seen per identifier so far
-
 JSON output
-~~~~~~~~~~~
+^^^^^^^^^^^
 
-The ``gold-miner`` tool can also output a stream json records if that’s
-easier to parse. Run ``gold-miner`` with ``-j`` to enable this feature.
+The ``gold-miner`` tool can also output a stream JSON records if that’s
+easier to parse. Run ``gold-miner`` with ``-j`` to enable this
+feature, or ``-J`` to output a flattened JSON output.
 
 Command Line Arguments
 ^^^^^^^^^^^^^^^^^^^^^^
