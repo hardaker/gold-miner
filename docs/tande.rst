@@ -218,7 +218,7 @@ configuration`_ shows the YAML configuration file given to the
 .. _example configuration: tande-example/tande.yml
 
 Command Line Arguments
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 .. sphinx_argparse_cli::
    :module: apropos.goldminer.tools.tande
