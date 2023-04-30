@@ -1,4 +1,4 @@
-Using gold-miner
+Workflow
 ================
 
 To use the ``gold-miner`` suite to attempt classification of unknown
@@ -34,7 +34,7 @@ additional useful tools that are distributed with the ``gold-miner``
 package.
 
 Steps to Classify Unknown Traffic Samples
-=========================================
+--------------------------------------------
 
 The process for using the rapid classifier involves *Generating
 individual training profiles* that measures a sample of labeled traffic
