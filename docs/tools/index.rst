@@ -9,3 +9,4 @@ Gold-Miner Tools
    goldminertrainer
    goldminertraineraggregator
    auditor
+   goldminerfingerprint
